@@ -6,16 +6,20 @@ This has been only tested on Windows, I have no clue if this works on UNIX-Based
 
 Additionally, I've only tested this in OBS. So I highly recommend using it
 
-# Setup
+# Setup Windows
 If you are running this after the first setup, work from step six on...
 
-1. Install PHP, of course...
-2. [Install Composer](https://getcomposer.org/download/)
-3. Clone the Repository
-4. Run ```composer require mgp25/instagram-php react/child-process``` in the cloned folder
-5. Edit the Username and Password inside of `config.php` to your instagram details
-6. Run the `goLive.php` script. (`php -f goLive.php`)
-7. Copy you Stream-URL and Stream-Key and paste them into your streaming software. [See OBS-Setup](https://github.com/JRoy/InstagramLive-PHP#obs-setup)
+0. Clone Repository
+1. Download PHP https://windows.php.net/download#php-7.2 (Thread Safe) & run php-win.exe & next php.exe
+2. [Install Composer](https://getcomposer.org/download/). If ask, accept auto-generated php.ini.
+3. Download https://curl.haxx.se/ca/cacert.pem and paste on <PHP Folder>\extras\ssl\ folder
+4. Modify php.ini in your PHP installation folder. 
+4.1. Remove `;` from the `extension=curl`, `extension=gd2`, `extension=exif`
+4.2. Remove `;`from `curl.cainfo =` and add the path to the file in the 3. step between ""
+5. Run ```composer require javigines/instagram-api react/child-process``` in the cloned folder
+6. Edit the Username and Password inside of `config.php` to your instagram details
+7. Run the `goLive.php` script. (`php -f goLive.php`)
+8. Copy you Stream-URL and Stream-Key and paste them into your streaming software. [See OBS-Setup](https://github.com/javigines/InstagramLive-PHP#obs-setup)
 
 # OBS-Setup
 1. Go to the "Stream" section of your OBS Settings 
@@ -25,7 +29,7 @@ If you are running this after the first setup, work from step six on...
 5. Make Sure "Use Authentication" is **unchecked** and press "OK"
 6. Start Streaming in OBS
 7. To stop streaming, run the "stop" command in your terminal and then press "Stop Streaming" in OBS
-* Note: To emulate the exact content being sent to Instagram, set your OBS canvas size to 720x1280. This can be done by going to Settings->Video and editing Base Canvas Resolution to "720x1280".
+* Note: To emulate the exact content being sent to Instagram, set your OBS canvas size to 720x1280. This can be done by going to Settings->Video and editing Base Canvas Resolution to "720x1280" and max of 30fps.
 
 # FAQ
 #### OBS gives a "Failed to connect" error
